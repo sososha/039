@@ -148,7 +148,9 @@ flowchart LR
 - Selection/Hit-test 実装戦略（CPU vs GPU pick）。
 - Tessellation パラメータの外部設定API。
 
-<script type="module">
-  import mermaid from "https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs";
-  mermaid.initialize({ startOnLoad: true });
+<script src="https://unpkg.com/mermaid@9/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ startOnLoad: true });
+  }
 </script>

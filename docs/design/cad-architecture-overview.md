@@ -101,7 +101,9 @@ erDiagram
 - フィーチャ履歴の表現方式（ツリー vs コマンドログ）。
 - スケッチ/拘束システムとの境界と責務分担。
 
-<script type="module">
-  import mermaid from "https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs";
-  mermaid.initialize({ startOnLoad: true });
+<script src="https://unpkg.com/mermaid@9/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ startOnLoad: true });
+  }
 </script>

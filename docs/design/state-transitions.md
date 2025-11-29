@@ -107,7 +107,9 @@ stateDiagram-v2
 - 単一選択モードを採用する場合、`Select(on)` 実行時に他の Selected をすべて OFF にしてから ON にする。
 - 複数選択モードなら、`Select(on)` は追加のみ。モードは上位(App/UI)が決定する。
 
-<script type="module">
-  import mermaid from "https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs";
-  mermaid.initialize({ startOnLoad: true });
+<script src="https://unpkg.com/mermaid@9/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ startOnLoad: true });
+  }
 </script>

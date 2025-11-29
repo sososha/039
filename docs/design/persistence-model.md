@@ -148,7 +148,9 @@ classDiagram
 - SceneContext/SceneWorld の状態（バッファやEntityId等）は保存しない。
 - 再ロード時には、CADコアのデータから SceneContext を再構築する（KernelShape + submit_shape など）。
 
-<script type="module">
-  import mermaid from "https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs";
-  mermaid.initialize({ startOnLoad: true });
+<script src="https://unpkg.com/mermaid@9/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ startOnLoad: true });
+  }
 </script>

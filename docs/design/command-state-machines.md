@@ -197,7 +197,9 @@ WaitSecond --Cancel/Esc--> Idle {Remove preview}
 
 Polyline/Rectangleなども同様に「必須点数n」「Close/Enterで確定」という形でFSM化する。
 
-<script type="module">
-  import mermaid from "https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs";
-  mermaid.initialize({ startOnLoad: true });
+<script src="https://unpkg.com/mermaid@9/dist/mermaid.min.js"></script>
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ startOnLoad: true });
+  }
 </script>
