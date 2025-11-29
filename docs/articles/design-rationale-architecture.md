@@ -172,4 +172,7 @@
 9. **SceneContext API / HTTP API / テスト仕様の固定**  
    SceneContext の外部契約（submit_shape / set_visibility / set_highlight / set_selected / set_transform / remove / render / pick / get_state）を `architecture-overview.md` に固定し、それを薄くラップする HTTP API を `http-api.md` に定義。E2Eシナリオテストは YAML/JSON ベースで「線→Move→Trim→Undo/Redo→再描画」の代表シナリオを formal spec に落とし、state_assert/screenshot_assert の意味も `test-plan.md` に定義した。
 
+10. **設計仕様フリーズのスナップショット**  
+    この時点の設計状態を Git タグ `spec-v0` およびブランチ `design-spec-freeze` としてGitHub上に保存した。今後大きな実装・試行錯誤を行っても、このタグ/ブランチに戻ることで「設計仕様完了時点」から再スタートできるようにしている。設計変更は原則 `main` や `feature/*` ブランチで docs を更新し、新たな spec タグを切る運用を想定している。
+
 この一連の流れにより、「理想像」から始まった設計が、SceneContext/CADコア/App/UI/HTTP/永続化/テストという各層の**具体的な契約とデータ構造**まで降りてきた。今後は、この仕様群を基に実装・検証フェーズへ進みつつ、必要な箇所を小さくアップデートしていく。

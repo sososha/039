@@ -9,6 +9,9 @@
 > **SceneContextの状態遷移ルールを厳守すること。**  
 > Display/Erase/Highlight/Select/SetTransform/ClearSelectionAll は必ず `docs/design/state-transitions.md` の状態機械に従うこと。Visible=false での Select/Highlight はエラーにし、暗黙の Display(on) を行わない。Dirty の解決順序（Geometry→Transform→Visual）と「render/screenshot 内部で sync→dirty が残れば debug_assert!」というポリシーを変更しない。
 > SceneContext や HTTP エンドポイントの仕様を変更する前に、必ず state-transitions.md を先に更新し、それにコードを合わせること。
+>
+> **設計仕様フリーズ点の扱い**  
+> 現在の設計仕様は Git タグ `spec-v0` とブランチ `design-spec-freeze` にスナップショットされています。このブランチ/タグは「設計仕様の基準点」として扱い、基本的に書き換えないでください。大きな設計変更を行う場合は、`main` や `feature/*` ブランチ上で docs を更新し、必要に応じて新しい spec タグを追加してください。
 
 ## 🎯 Mission
 
