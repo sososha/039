@@ -15,6 +15,34 @@
 - Command Server (public surface, thin): axum ベースのローカル HTTP+JSON API。SceneContext を薄くラップし、操作/状態取得/スクリーンショット取得を提供。内部構造は露出しない。
 - GPU Layer (internal, pub(crate)): device/queue/pipeline/allocator を一元管理。
 
+```mermaid
+flowchart LR
+    subgraph App["App / UI (Elm: Model/Msg/update)"]
+        U[Update<br/>Command FSM<br/>Selection FSM]
+    end
+
+    subgraph CAD["CAD Core\n(Document / Building / Level / Element)"]
+    end
+
+    subgraph SC["SceneContext (public API)"]
+        SW[SceneWorld\n(ECS storage)]
+        SYS[Systems\n(sync_gpu / render / selection)]
+    end
+
+    subgraph HTTP["Command Server\n(axum HTTP+JSON)"]
+    end
+
+    subgraph GPU["GPU Layer\n(wgpu device/queue/pipeline)"]
+    end
+
+    U -->|CAD操作| CAD
+    U -->|描画/選択API| SC
+    CAD -->|KernelShape / Tess| SC
+    SC <--> HTTP
+    SYS -->|command buffers| GPU
+    SW <-->|Entity/Visual/Dirty| SYS
+```
+
 ## Data & IDs
 - EntityId: 安定ID（再生成なし）、コピー可能な値型のみ露出。
 - VisualFlags: Visible / Selected / Highlighted をビット管理。

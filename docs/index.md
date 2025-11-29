@@ -20,7 +20,7 @@
 - テスト/E2E → [Test Plan](./design/test-plan.md)
 - App/Msg/FSMフロー → [App Interactions](./design/app-interactions.md)
 - 設計の背景と履歴 → [Design Rationale](./articles/design-rationale-architecture.md)
- - なぜこのアーキテクチャなのか → [Why This Architecture](./articles/why-this-architecture.md)
+- なぜこのアーキテクチャなのか → [Why This Architecture](./articles/why-this-architecture.md)
 
 要件レベルの文書は `docs/requirements/` にまとまっています：
 

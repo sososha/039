@@ -6,6 +6,42 @@
   → Selection FSM / Command FSM
   → CADコア / SceneContext / HTTP コマンドサーバ
 
+```mermaid
+flowchart LR
+    subgraph Input["winit Events"]
+        MD[MouseDown/Up]
+        MM[MouseMove]
+        MW[MouseWheel]
+        KD[KeyDown/Up]
+    end
+
+    subgraph Msg["App Msg (Model/Msg/update)"]
+        LM[Low-level Msg<br/>MouseDown/Move/…]
+        HM[High-level Msg<br/>CommandStart / LinePointInput / SelectionResult / CameraPan…]
+    end
+
+    subgraph FSM["FSM Layer"]
+        SF[Selection FSM]
+        CF[Command FSM]
+    end
+
+    CAD["CAD Core"]
+    SC["SceneContext"]
+
+    MD --> LM
+    MM --> LM
+    MW --> LM
+    KD --> LM
+
+    LM --> HM
+    HM --> SF
+    HM --> CF
+
+    SF -->|SelectionResult| CF
+    CF -->|CAD操作| CAD
+    CF -->|描画/選択API| SC
+```
+
 ## 1️⃣ Msg レイヤ
 
 - 低レベル入力Msg (winit由来)
@@ -91,4 +127,3 @@ App/UI層は `pick` API の存在だけを前提とし、CPU/GPU の詳細には
   - pivot はカーソル位置に応じて決める。update 内で `view_state.camera` を更新。
 
 Pan/Zoom は CommandActive 中でも許可し、Undo/Redo の対象外とする。
-

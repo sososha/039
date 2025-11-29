@@ -13,6 +13,22 @@
 
 ローカルFSM（各コマンド固有）で PointInput/OptionInput/Commit を処理し、連続作図なら `local_state=Initial` に戻す。グローバルFSMとローカルFSMを明確に分け、コマンド切替でローカル状態をリセットする。
 
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> CommandActive: CommandStart(cmd)
+    CommandActive --> Idle: Finish / Cancel
+
+    state CommandActive {
+        [*] --> Initial
+        Initial --> Running: first input
+        Running --> Running: more inputs
+        Running --> Committed: Commit
+        Committed --> Initial: Continuous
+        Committed --> [*]: Finish
+    }
+```
+
 ---
 
 ## Drawing Commands
@@ -34,7 +50,19 @@
 - プレビュー用の EntityId と確定用の EntityId を分ける。
 - MouseMove での更新は Transform ではなく、頂点/ジオメトリを更新（線なので軽量）。
 - 必須点数(2)が揃うまで Commit しない。
- - Backspace が押された場合、ローカルFSM内で「直前の点入力」を1ステップ戻す（Previewの形状のみ更新）。これはグローバルUndoとは別の概念とする。
+- Backspace が押された場合、ローカルFSM内で「直前の点入力」を1ステップ戻す（Previewの形状のみ更新）。これはグローバルUndoとは別の概念とする。
+
+```mermaid
+stateDiagram-v2
+    [*] --> WaitFirst
+    WaitFirst --> WaitSecond: PointInput(p1)
+    WaitSecond --> WaitSecond: MouseMove(p)
+    WaitSecond --> Commit: PointInput(p2)
+    WaitSecond --> WaitFirst: Backspace (v1対応の場合)
+    WaitSecond --> Idle: Cancel / Esc
+    Commit --> WaitFirst: Continuous
+    Commit --> Idle: Finish
+```
 
 ### Polyline (連続線)
 - 状態: `WaitFirst` → `WaitNext*` → (Close/Commit) → (`Continuous? WaitFirst : Finish`)
