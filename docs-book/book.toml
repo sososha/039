@@ -10,9 +10,15 @@ build-dir = "book"
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "navy"
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
 
 [output.html.search]
 enable = true
 
 [output.html.playpen]
 editable = false
+
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"

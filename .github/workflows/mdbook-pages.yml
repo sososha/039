@@ -27,8 +27,10 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Install mdBook
-        run: cargo install mdbook
+      - name: Install mdBook + plugins
+        run: |
+          cargo install mdbook
+          cargo install mdbook-mermaid
 
       - name: Build mdBook
         run: mdbook build docs-book
