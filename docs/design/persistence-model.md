@@ -84,6 +84,45 @@
 - `geometry.type`: 形状表現の種別（例: `"Line2D"`, `"Polyline2D"`, `"Arc2D"`）。描画やジオメトリ計算のための具体的な表現。
 - 例: 壁要素は `kind="Wall"`, `geometry.type="Polyline2D"` のように、「意味」と「形状表現」を分離する設計とする。
 
+```mermaid
+classDiagram
+    class Project {
+        +string project_id
+        +string name
+    }
+    class Document {
+        +string id
+        +string name
+    }
+    class Building {
+        +string id
+        +string name
+    }
+    class Level {
+        +string id
+        +string name
+        +float elevation
+    }
+    class Layer {
+        +string id
+        +string name
+        +bool visible
+        +bool locked
+    }
+    class Element {
+        +string id
+        +string kind
+        +string geometry_type
+    }
+
+    Project "1" o-- "*" Document
+    Document "1" o-- "*" Building
+    Building "1" o-- "*" Level
+    Document "1" o-- "*" Layer
+    Level "1" o-- "*" Element
+    Layer "1" o-- "*" Element
+```
+
 ## 3️⃣ ID の永続化
 
 - DocumentId/BuildingId/LevelId/LayerId/ElementId など、論理IDはファイルに保存し、再読み込み時に復元する。

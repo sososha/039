@@ -53,6 +53,29 @@ render()/screenshot は内部で dirty を検査し、必要なら sync を実�
 - S2: Visible, Highlighted, Unselected
 - S3: Visible, Selected (Highlight自由: ON/OFF)
 
+```mermaid
+stateDiagram-v2
+    [*] --> S0
+    S0: Invisible / Unselected / Unhighlighted
+    S1: Visible / Unselected / Unhighlighted
+    S2: Visible / Highlighted / Unselected
+    S3: Visible / Selected / Highlight optional
+
+    S0 --> S1: SubmitShape / Display(on)
+    S1 --> S0: Display(off)/Erase
+    S2 --> S0: Display(off)/Erase
+    S3 --> S0: Display(off)/Erase
+
+    S1 --> S2: Highlight(on)
+    S3 --> S3: Highlight(on)
+    S2 --> S1: Highlight(off)
+
+    S1 --> S3: Select(on)
+    S2 --> S3: Select(on)
+    S3 --> S1: Select(off) (no highlight)
+    S3 --> S2: Select(off) (highlight stays)
+```
+
 ### Events & Rules
 - SubmitShape: S0 (implicitly) → S1 (Visible=on, Selected/Highlight=off) (Dirty=Geometry+Visual)
 - Display(on):

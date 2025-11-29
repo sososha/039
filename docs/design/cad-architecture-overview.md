@@ -35,6 +35,41 @@
 - SceneContext は EntityId をキーに描画状態のみ管理し、Element/Face/Edge の意味は知らない。
 - Selection/Commandは、pickで得たEntityIdからこのマップを参照し、CADコア側の要素状態を更新する。
 
+```mermaid
+erDiagram
+    PROJECT ||--o{ DOCUMENT : contains
+    DOCUMENT ||--o{ BUILDING : contains
+    BUILDING ||--o{ LEVEL : contains
+    DOCUMENT ||--o{ LAYER : owns
+    LEVEL ||--o{ ELEMENT : hosts
+    LAYER ||--o{ ELEMENT : groups
+
+    DOCUMENT {
+        string id
+        string name
+    }
+    BUILDING {
+        string id
+        string name
+    }
+    LEVEL {
+        string id
+        string name
+        float elevation
+    }
+    LAYER {
+        string id
+        string name
+        bool visible
+        bool locked
+    }
+    ELEMENT {
+        string id
+        string kind
+        string geometry_type
+    }
+```
+
 ## Data Separation
 - **Semantic vs Geometric（段階的に拡張）**
   - Semantic: 壁タイプ/用途/部屋/構造種別など建築属性。現段階では最小限（タイプ・材質・厚み・高さなど）に絞り、BIM的な詳細属性は別レイヤとして後付け可能にする。
