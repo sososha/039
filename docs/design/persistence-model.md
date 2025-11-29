@@ -147,3 +147,8 @@ classDiagram
 - 永続化対象は CADコアの論理モデルのみ。
 - SceneContext/SceneWorld の状態（バッファやEntityId等）は保存しない。
 - 再ロード時には、CADコアのデータから SceneContext を再構築する（KernelShape + submit_shape など）。
+
+<script type="module">
+  import mermaid from "https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true });
+</script>

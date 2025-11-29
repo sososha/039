@@ -127,3 +127,8 @@ App/UI層は `pick` API の存在だけを前提とし、CPU/GPU の詳細には
   - pivot はカーソル位置に応じて決める。update 内で `view_state.camera` を更新。
 
 Pan/Zoom は CommandActive 中でも許可し、Undo/Redo の対象外とする。
+
+<script type="module">
+  import mermaid from "https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true });
+</script>

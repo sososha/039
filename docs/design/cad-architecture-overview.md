@@ -100,3 +100,8 @@ erDiagram
 - Element 種類の最小セット（壁/床/屋根/柱/梁/開口 以外をどこまで含めるか）。
 - フィーチャ履歴の表現方式（ツリー vs コマンドログ）。
 - スケッチ/拘束システムとの境界と責務分担。
+
+<script type="module">
+  import mermaid from "https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true });
+</script>

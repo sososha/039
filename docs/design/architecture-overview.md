@@ -147,3 +147,8 @@ flowchart LR
 - Camera API 仕様（パラメータ/投影種別）の固定。
 - Selection/Hit-test 実装戦略（CPU vs GPU pick）。
 - Tessellation パラメータの外部設定API。
+
+<script type="module">
+  import mermaid from "https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true });
+</script>
