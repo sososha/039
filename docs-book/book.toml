@@ -1,0 +1,20 @@
+[book]
+title = "Rust CAD Rendering Core — Design Specs"
+authors = ["sososha & AI collaborators"]
+language = "ja"
+multilingual = false
+src = "src"
+
+[build]
+build-dir = "book"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+
+[output.html.search]
+enable = true
+
+[output.html.playpen]
+editable = false
+
