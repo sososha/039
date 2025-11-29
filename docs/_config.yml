@@ -1,0 +1,3 @@
+title: Rust CAD Rendering Core
+description: "Rust + wgpu + ECS ベースの CAD レンダリング・操作コア設計"
+theme: jekyll-theme-minimal
