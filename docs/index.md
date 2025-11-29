@@ -31,6 +31,23 @@
 
 ---
 
+## 🗺 主なMermaid図へのショートカット
+
+- アーキテクチャ全体図  
+  → [Architecture Overview](./design/architecture-overview.md) の「Layering / Responsibilities」直下
+- App の Msg / FSM / SceneContext フロー  
+  → [App Interactions](./design/app-interactions.md) 冒頭
+- グローバルFSM＋LineコマンドFSM  
+  → [Command State Machines](./design/command-state-machines.md) 冒頭と Line セクション
+- SceneContext の Visible/Selected/Highlighted 状態遷移  
+  → [State Transitions](./design/state-transitions.md) の「State Machine (Display/Highlight/Select)」直下
+- CAD Core の ER 図  
+  → [CAD Architecture Overview](./design/cad-architecture-overview.md) の IDs and Referencing セクション
+- JSON 永続化用クラス図  
+  → [Persistence Model](./design/persistence-model.md) の kind / geometry.type セクション
+
+---
+
 ## 🧊 設計フェーズの状態
 
 - 設計フェーズ: **デザインフリーズ済み**
